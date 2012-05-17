@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D8B16B7915644503004E672C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B7815644503004E672C /* UIKit.framework */; };
+		D8B16B7B15644503004E672C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B7A15644503004E672C /* Foundation.framework */; };
+		D8B16B7D15644503004E672C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B7C15644503004E672C /* CoreGraphics.framework */; };
+		D8B16B8315644503004E672C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8B16B8115644503004E672C /* InfoPlist.strings */; };
+		D8B16B8515644503004E672C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B16B8415644503004E672C /* main.m */; };
+		D8B16B8915644503004E672C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B16B8815644503004E672C /* AppDelegate.m */; };
+		D8B16B8C15644503004E672C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B16B8B15644503004E672C /* ViewController.m */; };
+		D8B16B8F15644503004E672C /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B16B8D15644503004E672C /* ViewController_iPhone.xib */; };
+		D8B16B9215644503004E672C /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B16B9015644503004E672C /* ViewController_iPad.xib */; };
+		D8B16B991564457A004E672C /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B981564457A004E672C /* DropboxSDK.framework */; };
+		D8B16B9B156445FD004E672C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B9A156445FD004E672C /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D8B16B7415644503004E672C /* dotjs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dotjs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B16B7815644503004E672C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D8B16B7A15644503004E672C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D8B16B7C15644503004E672C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D8B16B8015644503004E672C /* dotjs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "dotjs-Info.plist"; sourceTree = "<group>"; };
+		D8B16B8215644503004E672C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D8B16B8415644503004E672C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D8B16B8615644503004E672C /* dotjs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dotjs-Prefix.pch"; sourceTree = "<group>"; };
+		D8B16B8715644503004E672C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D8B16B8815644503004E672C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D8B16B8A15644503004E672C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D8B16B8B15644503004E672C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D8B16B8E15644503004E672C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		D8B16B9115644503004E672C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		D8B16B981564457A004E672C /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		D8B16B9A156445FD004E672C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D8B16B7115644503004E672C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B16B9B156445FD004E672C /* Security.framework in Frameworks */,
+				D8B16B7915644503004E672C /* UIKit.framework in Frameworks */,
+				D8B16B7B15644503004E672C /* Foundation.framework in Frameworks */,
+				D8B16B7D15644503004E672C /* CoreGraphics.framework in Frameworks */,
+				D8B16B991564457A004E672C /* DropboxSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D8B16B6915644503004E672C = {
+			isa = PBXGroup;
+			children = (
+				D8B16B7E15644503004E672C /* dotjs */,
+				D8B16B7715644503004E672C /* Frameworks */,
+				D8B16B7515644503004E672C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D8B16B7515644503004E672C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D8B16B7415644503004E672C /* dotjs.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D8B16B7715644503004E672C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8B16B9A156445FD004E672C /* Security.framework */,
+				D8B16B981564457A004E672C /* DropboxSDK.framework */,
+				D8B16B7815644503004E672C /* UIKit.framework */,
+				D8B16B7A15644503004E672C /* Foundation.framework */,
+				D8B16B7C15644503004E672C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8B16B7E15644503004E672C /* dotjs */ = {
+			isa = PBXGroup;
+			children = (
+				D8B16B8715644503004E672C /* AppDelegate.h */,
+				D8B16B8815644503004E672C /* AppDelegate.m */,
+				D8B16B8A15644503004E672C /* ViewController.h */,
+				D8B16B8B15644503004E672C /* ViewController.m */,
+				D8B16B8D15644503004E672C /* ViewController_iPhone.xib */,
+				D8B16B9015644503004E672C /* ViewController_iPad.xib */,
+				D8B16B7F15644503004E672C /* Supporting Files */,
+			);
+			path = dotjs;
+			sourceTree = "<group>";
+		};
+		D8B16B7F15644503004E672C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D8B16B8015644503004E672C /* dotjs-Info.plist */,
+				D8B16B8115644503004E672C /* InfoPlist.strings */,
+				D8B16B8415644503004E672C /* main.m */,
+				D8B16B8615644503004E672C /* dotjs-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D8B16B7315644503004E672C /* dotjs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8B16B9515644503004E672C /* Build configuration list for PBXNativeTarget "dotjs" */;
+			buildPhases = (
+				D8B16B7015644503004E672C /* Sources */,
+				D8B16B7115644503004E672C /* Frameworks */,
+				D8B16B7215644503004E672C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dotjs;
+			productName = dotjs;
+			productReference = D8B16B7415644503004E672C /* dotjs.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D8B16B6B15644503004E672C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = D8B16B6E15644503004E672C /* Build configuration list for PBXProject "dotjs" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D8B16B6915644503004E672C;
+			productRefGroup = D8B16B7515644503004E672C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D8B16B7315644503004E672C /* dotjs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D8B16B7215644503004E672C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B16B8315644503004E672C /* InfoPlist.strings in Resources */,
+				D8B16B8F15644503004E672C /* ViewController_iPhone.xib in Resources */,
+				D8B16B9215644503004E672C /* ViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D8B16B7015644503004E672C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8B16B8515644503004E672C /* main.m in Sources */,
+				D8B16B8915644503004E672C /* AppDelegate.m in Sources */,
+				D8B16B8C15644503004E672C /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D8B16B8115644503004E672C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8B16B8215644503004E672C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D8B16B8D15644503004E672C /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8B16B8E15644503004E672C /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		D8B16B9015644503004E672C /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8B16B9115644503004E672C /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D8B16B9315644503004E672C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D8B16B9415644503004E672C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D8B16B9615644503004E672C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dotjs/dotjs-Prefix.pch";
+				INFOPLIST_FILE = "dotjs/dotjs-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D8B16B9715644503004E672C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dotjs/dotjs-Prefix.pch";
+				INFOPLIST_FILE = "dotjs/dotjs-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D8B16B6E15644503004E672C /* Build configuration list for PBXProject "dotjs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B16B9315644503004E672C /* Debug */,
+				D8B16B9415644503004E672C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8B16B9515644503004E672C /* Build configuration list for PBXNativeTarget "dotjs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8B16B9615644503004E672C /* Debug */,
+				D8B16B9715644503004E672C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D8B16B6B15644503004E672C /* Project object */;
+}
