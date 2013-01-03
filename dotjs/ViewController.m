@@ -51,16 +51,24 @@
 	[embeddedWebView stringByEvaluatingJavaScriptFromString:wrappedJs];
 }
 
--(void)checkJsForUrl:(NSString*)urlString{
+-(void)checkJsForDomain:(NSString*)urlString{
     NSArray *parts = [urlString $split:@"."];
     if ([parts count] > 2) {
         NSString *secondLevelDomain = [NSString stringWithFormat:@"%@.%@", [parts $at:[parts count] - 2], [parts $last]];
-        [self checkJsForUrl:secondLevelDomain];
+        [self checkJsForDomain:secondLevelDomain];
     }
 	NSString *jsFile = [NSString stringWithFormat:@"%@/%@.js", [$ documentPath], urlString];
     if ([[NSFileManager defaultManager] fileExistsAtPath:jsFile]) {
         [self loadJavascriptFromFilepath:jsFile];
     }
+}
+
+-(void)checkJsForUrl:(NSString*)urlString{
+    NSString *jsFile = [[$ documentPath] $append:@"/default.js"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:jsFile]) {
+        [self loadJavascriptFromFilepath:jsFile];
+    }
+    [self checkJsForDomain:urlString];
 }
 
 #pragma mark UIWebView methods
