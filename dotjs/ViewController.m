@@ -95,6 +95,10 @@
     }
 }
 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    loadBalance--;
+}
+
 #pragma IBActions to handle webview stuff
 -(IBAction)reloadWebView:(id)sender{
     if ([embeddedWebView isLoading]) {
