@@ -1,0 +1,6 @@
+[submodule "CHDropboxSync"]
+	path = CHDropboxSync
+	url = git://github.com/chrishulbert/CHDropboxSync.git
+[submodule "ConciseKit"]
+	path = ConciseKit
+	url = https://github.com/petejkim/ConciseKit

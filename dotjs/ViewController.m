@@ -7,80 +7,133 @@
 //
 
 #import "ViewController.h"
-
+#import "ConciseKit.h"
+#import "CHDropboxSync.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+@synthesize syncer;
 
 -(void)link{
 	[NSThread sleepForTimeInterval:2.0];
 	if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] link];
     } else {
-		[[self restClient] performSelectorOnMainThread:@selector(loadMetadata:) withObject:@"/dotjs" waitUntilDone:YES];
+        self.syncer = $new(CHDropboxSync);
+        self.syncer.delegate = self;
+//        [self.syncer doSync];
 	}
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+//allow sync from shake
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (event.type == UIEventSubtypeMotionShake){
+        [self.syncer doSync];
+    }
+}
+
+// Delegate callback from the syncer. You can dealloc it now.
+- (void)syncComplete {
+    NSLog(@"Sync complete");
 }
 
 -(void)loadJavascriptFromFilepath:(NSString*)filePath{
-	[(UIWebView*)self.view stringByEvaluatingJavaScriptFromString:[[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-}
-
-#pragma mark DropboxAPI methods
-- (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata {
-	
-    if (metadata.isDirectory) {
-        NSLog(@"Folder '%@' contains:", metadata.path);
-		for (DBMetadata *file in metadata.contents) {
-			NSLog(@"\t%@", file.filename);
-		}
-    }
-	[[NSUserDefaults standardUserDefaults] setObject:folderData forKey:@"folderdata"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	folderData = metadata;
-	[self checkJsForUrl:[[((UIWebView*)self.view).request URL] host]];
-}
-
-- (void)restClient:(DBRestClient *)client loadMetadataFailedWithError:(NSError *)error {
-	
-    NSLog(@"Error loading metadata: %@", error);
-}
-
-- (void)restClient:(DBRestClient*)client loadedFile:(NSString*)localPath {
-    NSLog(@"File loaded into path: %@", localPath);
-	[self loadJavascriptFromFilepath:localPath];
-}
-
-- (void)restClient:(DBRestClient*)client loadFileFailedWithError:(NSError*)error {
-    NSLog(@"There was an error loading the file - %@", error);
+    NSLog(@"Loading JS from file: %@", filePath);
+    NSString *js = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    NSString *wrappedJs = [NSString stringWithFormat:@"$(document).ready(function() { %@; });", js];
+	[embeddedWebView stringByEvaluatingJavaScriptFromString:wrappedJs];
 }
 
 -(void)checkJsForUrl:(NSString*)urlString{
-	NSArray *savePaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSMutableString *savePath = [NSMutableString stringWithString:[savePaths objectAtIndex:0]];
-	if (folderData == NULL) {
-		folderData = [[NSUserDefaults standardUserDefaults] objectForKey:@"folderdata"];
-	}
-	//see if we can find a file that matches!
-	for (DBMetadata *file in folderData.contents) {
-		if ([file.filename hasPrefix:urlString]) {
-			//we've found a matching file!
-			[savePath appendFormat:@"/%@",file.filename];
-			if ([[NSFileManager defaultManager] fileExistsAtPath:savePath isDirectory:NO]) {
-				[self loadJavascriptFromFilepath:savePath];
-			} else {
-				[[self restClient] loadFile:file.path intoPath:savePath];
-			}
-		}
-	}
+    NSArray *parts = [urlString $split:@"."];
+    if ([parts count] > 2) {
+        NSString *secondLevelDomain = [NSString stringWithFormat:@"%@.%@", [parts $at:[parts count] - 2], [parts $last]];
+        [self checkJsForUrl:secondLevelDomain];
+    }
+	NSString *jsFile = [NSString stringWithFormat:@"%@/%@.js", [$ documentPath], urlString];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:jsFile]) {
+        [self loadJavascriptFromFilepath:jsFile];
+    }
 }
 
 #pragma mark UIWebView methods
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    requestUrlString = [[request URL] absoluteString];
+    if (![requestUrlString isEqualToString:@"about:blank"] && ![oldUrlString isEqualToString:requestUrlString]) {
+        newPageLoad = YES;
+    }
+    return YES;
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    loadBalance++;
+    [refreshButton setImage:[UIImage imageNamed:@"46-no"]];
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-	NSString *loadedHost = [[webView.request URL] host];
-	[self checkJsForUrl:loadedHost];
+    loadBalance--;
+    if (loadBalance == 0 && newPageLoad && ![oldUrlString isEqualToString:[[webView.request URL] absoluteString]]) {
+        newPageLoad = NO;
+        NSString *loadedHost = [[webView.request URL] host];
+        oldUrlString = [[webView.request URL] absoluteString];
+        NSLog(@"Finished Loading %@", [[webView.request URL] absoluteString]);
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"jquery-1.8.3.min" ofType:@"js"];
+        NSData *jquery = [NSData dataWithContentsOfFile:filePath];
+        NSString *jqueryString = [[NSMutableString alloc] initWithData:jquery encoding:NSUTF8StringEncoding];
+        [webView stringByEvaluatingJavaScriptFromString:jqueryString];
+        [self checkJsForUrl:loadedHost];
+    }
+    
+//    change our stop icon to refresh
+    if (![webView isLoading]) {
+        [refreshButton setImage:[UIImage imageNamed:@"01-refresh"]];
+    }
+}
+
+#pragma IBActions to handle webview stuff
+-(IBAction)reloadWebView:(id)sender{
+    if ([embeddedWebView isLoading]) {
+        [embeddedWebView stopLoading];
+        [refreshButton setImage:[UIImage imageNamed:@"01-refresh"]];
+    } else {
+        [embeddedWebView reload];
+        [refreshButton setImage:[UIImage imageNamed:@"46-no"]];
+        oldUrlString = @"";
+    }
+}
+-(IBAction)goBack:(id)sender{
+    [embeddedWebView goBack];
+}
+-(IBAction)goForward:(id)sender{
+    [embeddedWebView goForward];
+}
+
+-(IBAction)showOptions:(id)sender{
+    UIActionSheet *options = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Enter URL", nil];
+    [options showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:{
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"URL" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Go", nil];
+            [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+            [alertView show];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSString *urlString = [[alertView textFieldAtIndex:0] text];
+    [embeddedWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -88,20 +141,28 @@
 	[NSThread detachNewThreadSelector:@selector(link) toTarget:self withObject:nil];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-	[(UIWebView*)self.view setDelegate:self];
-	[(UIWebView*)self.view loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]];
+//    set an initial load balance of 0
+    loadBalance = 0;
+    
+//    go back swipe
+    UISwipeGestureRecognizer *swiper = [[UISwipeGestureRecognizer alloc] initWithTarget:embeddedWebView action:@selector(goBack)];
+    [swiper setDirection:UISwipeGestureRecognizerDirectionRight];
+    [swiper setNumberOfTouchesRequired:2];
+    [embeddedWebView addGestureRecognizer:swiper];
+//    go forward swipe
+    swiper = [[UISwipeGestureRecognizer alloc] initWithTarget:embeddedWebView action:@selector(goForward)];
+    [swiper setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [swiper setNumberOfTouchesRequired:2];
+    [embeddedWebView addGestureRecognizer:swiper];
+    
+	[embeddedWebView setDelegate:self];
+	[embeddedWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]];
 }
 
-- (DBRestClient*)restClient {
-    if (restClient == nil) {
-        restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-        restClient.delegate = self;
-    }
-    return restClient;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
 }
 
 - (void)viewDidUnload

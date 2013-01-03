@@ -28,9 +28,9 @@
     [self.window makeKeyAndVisible];
 	
 	//load up dropbox
-	NSString* appKey = @"u1p7n2zmx07stu0";
-	NSString* appSecret = @"as687xbo55tghoy";
-	NSString *root = kDBRootDropbox;
+	NSString* appKey = @"hgntm573sajlqx2";
+	NSString* appSecret = @"yblbm5zkqf0x4zj";
+	NSString *root = kDBRootAppFolder;
 	NSString* errorMsg = nil;
 	if ([appKey rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
 		errorMsg = @"Make sure you set the app key correctly in DBRouletteAppDelegate.m";
