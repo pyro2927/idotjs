@@ -132,8 +132,13 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSString *urlString = [[alertView textFieldAtIndex:0] text];
-    [embeddedWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+    if(buttonIndex != alertView.cancelButtonIndex){
+        NSMutableString *urlString = [NSMutableString stringWithString:[[alertView textFieldAtIndex:0] text]];
+        if (![urlString hasPrefix:@"http"]) {
+            [urlString $prepend_:@"http://"];
+        }
+        [embeddedWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
