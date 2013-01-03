@@ -39,6 +39,8 @@
 		D8B16B9215644503004E672C /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B16B9015644503004E672C /* ViewController_iPad.xib */; };
 		D8B16B991564457A004E672C /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B981564457A004E672C /* DropboxSDK.framework */; };
 		D8B16B9B156445FD004E672C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B9A156445FD004E672C /* Security.framework */; };
+		D8E22E71169623E500AD34C1 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E22E70169623E500AD34C1 /* Icon@2x.png */; };
+		D8E22E731696240200AD34C1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E22E721696240200AD34C1 /* Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +132,8 @@
 		D8B16B9115644503004E672C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		D8B16B981564457A004E672C /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		D8B16B9A156445FD004E672C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D8E22E70169623E500AD34C1 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D8E22E721696240200AD34C1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,7 +271,7 @@
 		D8B16B6915644503004E672C = {
 			isa = PBXGroup;
 			children = (
-				D80EA319169615240068D96C /* Default-568h@2x.png */,
+				D8E22E741696240A00AD34C1 /* Icons & Default */,
 				D8B16B7E15644503004E672C /* dotjs */,
 				D8B16B7715644503004E672C /* Frameworks */,
 				D8B16B7515644503004E672C /* Products */,
@@ -324,6 +328,16 @@
 				D8B16B8615644503004E672C /* dotjs-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8E22E741696240A00AD34C1 /* Icons & Default */ = {
+			isa = PBXGroup;
+			children = (
+				D8E22E721696240200AD34C1 /* Icon.png */,
+				D8E22E70169623E500AD34C1 /* Icon@2x.png */,
+				D80EA319169615240068D96C /* Default-568h@2x.png */,
+			);
+			name = "Icons & Default";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +405,8 @@
 				D80EA317169611140068D96C /* 46-no.png in Resources */,
 				D80EA318169611140068D96C /* 46-no@2x.png in Resources */,
 				D80EA31A169615240068D96C /* Default-568h@2x.png in Resources */,
+				D8E22E71169623E500AD34C1 /* Icon@2x.png in Resources */,
+				D8E22E731696240200AD34C1 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
