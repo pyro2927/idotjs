@@ -24,6 +24,24 @@
     return self;
 }
 
+- (void)keyboardDidShow: (NSNotification *) notif{
+    NSValue *value = [[notif userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardFrame = [value CGRectValue];
+    CGRect oldFrame = scriptTextView.frame;
+    [UIView animateWithDuration:.25f animations:^{
+        [scriptTextView setFrame:CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height - keyboardFrame.size.height)];
+    }];
+}
+
+- (void)keyboardDidHide: (NSNotification *) notif{
+    NSValue *value = [[notif userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardFrame = [value CGRectValue];
+    CGRect oldFrame = scriptTextView.frame;
+    [UIView animateWithDuration:.25f animations:^{
+        [scriptTextView setFrame:CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height + keyboardFrame.size.height)];
+    }];
+}
+
 -(void)save{
     NSString *fullFilePath = [[[$ documentPath] $append:@"/"] $append:scriptName];
     [scriptTextView.text writeToFile:fullFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -33,9 +51,22 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    scriptTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    scriptTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height)];
     [self.view addSubview:scriptTextView];
+    [scriptTextView setKeyboardType:UIKeyboardTypeASCIICapable];
+    [scriptTextView setReturnKeyType:UIReturnKeyDefault];
     [scriptTextView setDelegate:self];
+    
+//    detect when our keyboard is shown/hidden
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
