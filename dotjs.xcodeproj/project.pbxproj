@@ -30,6 +30,7 @@
 		D80EA317169611140068D96C /* 46-no.png in Resources */ = {isa = PBXBuildFile; fileRef = D80EA311169611140068D96C /* 46-no.png */; };
 		D80EA318169611140068D96C /* 46-no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D80EA312169611140068D96C /* 46-no@2x.png */; };
 		D80EA31A169615240068D96C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D80EA319169615240068D96C /* Default-568h@2x.png */; };
+		D8ABA392169775EA00BA7B8B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ABA391169775EA00BA7B8B /* QuartzCore.framework */; };
 		D8B16B7915644503004E672C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B7815644503004E672C /* UIKit.framework */; };
 		D8B16B7B15644503004E672C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B7A15644503004E672C /* Foundation.framework */; };
 		D8B16B7D15644503004E672C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B7C15644503004E672C /* CoreGraphics.framework */; };
@@ -122,6 +123,7 @@
 		D80EA3441696197B0068D96C /* NSURL+MPURLParameterAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+MPURLParameterAdditions.h"; sourceTree = "<group>"; };
 		D80EA3451696197B0068D96C /* NSURLResponse+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Encoding.h"; sourceTree = "<group>"; };
 		D80EA3461696197B0068D96C /* UIAlertView+Dropbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Dropbox.h"; sourceTree = "<group>"; };
+		D8ABA391169775EA00BA7B8B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D8B16B7415644503004E672C /* dotjs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dotjs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B16B7815644503004E672C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8B16B7A15644503004E672C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -147,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8ABA392169775EA00BA7B8B /* QuartzCore.framework in Frameworks */,
 				D80EA2F41695EF7E0068D96C /* SystemConfiguration.framework in Frameworks */,
 				D8B16B9B156445FD004E672C /* Security.framework in Frameworks */,
 				D8B16B7915644503004E672C /* UIKit.framework in Frameworks */,
@@ -295,6 +298,7 @@
 		D8B16B7715644503004E672C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8ABA391169775EA00BA7B8B /* QuartzCore.framework */,
 				D80EA2F31695EF7E0068D96C /* SystemConfiguration.framework */,
 				D8B16B9A156445FD004E672C /* Security.framework */,
 				D8B16B981564457A004E672C /* DropboxSDK.framework */,

@@ -145,7 +145,7 @@
             if ([[DBSession sharedSession] isLinked]) {
                 [self.syncer doSync];
             } else {
-                [[DBSession sharedSession] link];
+                [[DBSession sharedSession] linkFromController:self];
             }
             break;
         default:
