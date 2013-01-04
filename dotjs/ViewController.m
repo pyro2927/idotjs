@@ -76,9 +76,11 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     loadBalance++;
     [refreshButton setImage:[UIImage imageNamed:@"46-no"]];
+    ShowNetworkIndicator;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     loadBalance--;
+    
     if (loadBalance == 0 && newPageLoad && ![oldUrlString isEqualToString:[[webView.request URL] absoluteString]]) {
         newPageLoad = NO;
         NSString *loadedHost = [[webView.request URL] host];
@@ -92,7 +94,8 @@
     }
     
 //    change our stop icon to refresh
-    if (![webView isLoading]) {
+    if (![webView isLoading] || loadBalance == 0) {
+        HideNetworkIndicator;
         [refreshButton setImage:[UIImage imageNamed:@"01-refresh"]];
     }
 }

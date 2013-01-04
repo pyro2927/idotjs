@@ -14,3 +14,6 @@
 #endif
 
 #define kDismissModal   @"dismiss_modal"
+
+#define ShowNetworkIndicator    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES]
+#define HideNetworkIndicator    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO]
