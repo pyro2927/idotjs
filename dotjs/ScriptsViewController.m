@@ -32,6 +32,7 @@
 -(void)addNewScript{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ScriptName" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create", nil];
     [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [[alertView textFieldAtIndex:0] setKeyboardType:UIKeyboardTypeURL];
     [alertView show];
 }
 
