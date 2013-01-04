@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditScriptViewController : UIViewController
+@interface EditScriptViewController : UIViewController<UITextViewDelegate>{
+    UITextView *scriptTextView;
+    NSString *scriptName;
+}
+
+@property NSString *scriptName;
 
 @end

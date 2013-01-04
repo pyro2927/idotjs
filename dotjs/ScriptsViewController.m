@@ -8,6 +8,7 @@
 
 #import "ScriptsViewController.h"
 #import "ConciseKit.h"
+#import "EditScriptViewController.h"
 
 @interface ScriptsViewController ()
 
@@ -28,6 +29,20 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kDismissModal object:nil];
 }
 
+-(void)addNewScript{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ScriptName" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create", nil];
+    [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex != alertView.cancelButtonIndex){
+        EditScriptViewController *editView = $new(EditScriptViewController);
+        [editView setScriptName:[[alertView textFieldAtIndex:0] text]];
+        [self.navigationController pushViewController:editView animated:YES];
+    }
+}
+
 -(void)loadScripts{
     scripts = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[$ documentPath] error:nil];
 }
@@ -41,6 +56,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss)];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewScript)];
+    } else {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss)];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,12 +139,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    EditScriptViewController *editView = $new(EditScriptViewController);
+    [editView setScriptName:[scripts objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:editView animated:YES];
 }
 
 @end
