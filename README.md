@@ -1,6 +1,10 @@
 # idotjs
 
-[dotjs](https://github.com/defunkt/dotjs) for iOS. By storing .js files into your Dropbox folder `~/Dropbox/Apps/idotjs/`, you can inject Javascript into your mobile browsing experience. 
+[dotjs](https://github.com/defunkt/dotjs) for iOS. By storing .js files into your Dropbox folder `~/Dropbox/Apps/idotjs/`, you can inject Javascript into your mobile browsing experience.
+
+## Javascript
+
+idotjs uses [jQuery 1.8.2-minified](http://jquery.com/).  If any script is named `default.js`, it will load every time a page is loaded.
 
 ## Controls
 
