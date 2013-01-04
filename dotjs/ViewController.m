@@ -32,7 +32,11 @@
 //allow sync from shake
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (event.type == UIEventSubtypeMotionShake){
-        [self.syncer doSync];
+        if ([[DBSession sharedSession] isLinked]) {
+            [self.syncer doSync];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Not Linked" message:@"Dropbox is not linked. Please link Dropbox to enable syncing." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
     }
 }
 
@@ -123,7 +127,8 @@
 }
 
 -(IBAction)showOptions:(id)sender{
-    UIActionSheet *options = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Enter URL", @"View Scripts", nil];
+    NSString *dropboxText = [([[DBSession sharedSession] isLinked] ? @"Sync" : @"Link") $append:@" Dropbox"];
+    UIActionSheet *options = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Enter URL", @"View Scripts", dropboxText, nil];
     [options showInView:self.view];
 }
 
@@ -141,7 +146,15 @@
             [self presentViewController:nav animated:YES completion:^{
                 
             }];
+            break;
         }
+        case 2:
+            if ([[DBSession sharedSession] isLinked]) {
+                [self.syncer doSync];
+            } else {
+                [[DBSession sharedSession] link];
+            }
+            break;
         default:
             break;
     }
