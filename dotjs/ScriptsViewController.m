@@ -143,6 +143,7 @@
     EditScriptViewController *editView = $new(EditScriptViewController);
     [editView setScriptName:[scripts objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:editView animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
