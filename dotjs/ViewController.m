@@ -18,13 +18,6 @@
 @implementation ViewController
 @synthesize syncer;
 
--(void)link{
-	[NSThread sleepForTimeInterval:2.0];
-	if (![[DBSession sharedSession] isLinked]) {
-        [[DBSession sharedSession] link];
-    }
-}
-
 - (BOOL)canBecomeFirstResponder {
     return YES;
 }
@@ -178,7 +171,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:YES];
-	[NSThread detachNewThreadSelector:@selector(link) toTarget:self withObject:nil];
 }
 
 - (void)viewDidLoad{
