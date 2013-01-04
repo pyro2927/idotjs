@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D802D6DC1696942D000230B9 /* ScriptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D802D6DB1696942D000230B9 /* ScriptsViewController.m */; };
+		D802D6E016969B4F000230B9 /* EditScriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D802D6DF16969B4F000230B9 /* EditScriptViewController.m */; };
 		D80EA2DE1695EF2D0068D96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D80EA2DD1695EF2D0068D96C /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D80EA2EB1695EF3A0068D96C /* ConciseKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D80EA2E41695EF3A0068D96C /* ConciseKit.m */; };
 		D80EA2EC1695EF3A0068D96C /* NSArray+ConciseKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D80EA2E61695EF3A0068D96C /* NSArray+ConciseKit.m */; };
@@ -44,6 +46,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D802D6DA1696942D000230B9 /* ScriptsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptsViewController.h; sourceTree = "<group>"; };
+		D802D6DB1696942D000230B9 /* ScriptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptsViewController.m; sourceTree = "<group>"; };
+		D802D6DE16969B4F000230B9 /* EditScriptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditScriptViewController.h; sourceTree = "<group>"; };
+		D802D6DF16969B4F000230B9 /* EditScriptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditScriptViewController.m; sourceTree = "<group>"; };
 		D80EA2D51695EF1A0068D96C /* CHDropboxSync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CHDropboxSync.h; path = CHDropboxSync/CHDropboxSync.h; sourceTree = SOURCE_ROOT; };
 		D80EA2D61695EF1A0068D96C /* CHDropboxSync.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CHDropboxSync.m; path = CHDropboxSync/CHDropboxSync.m; sourceTree = SOURCE_ROOT; };
 		D80EA2D71695EF1A0068D96C /* SyncTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SyncTask.h; path = CHDropboxSync/SyncTask.h; sourceTree = SOURCE_ROOT; };
@@ -312,6 +318,10 @@
 				D8B16B8815644503004E672C /* AppDelegate.m */,
 				D8B16B8A15644503004E672C /* ViewController.h */,
 				D8B16B8B15644503004E672C /* ViewController.m */,
+				D802D6DA1696942D000230B9 /* ScriptsViewController.h */,
+				D802D6DB1696942D000230B9 /* ScriptsViewController.m */,
+				D802D6DE16969B4F000230B9 /* EditScriptViewController.h */,
+				D802D6DF16969B4F000230B9 /* EditScriptViewController.m */,
 				D8B16B8D15644503004E672C /* ViewController_iPhone.xib */,
 				D8B16B9015644503004E672C /* ViewController_iPad.xib */,
 				D8B16B7F15644503004E672C /* Supporting Files */,
@@ -428,6 +438,8 @@
 				D80EA2ED1695EF3A0068D96C /* NSDictionary+ConciseKit.m in Sources */,
 				D80EA2EE1695EF3A0068D96C /* NSString+ConciseKit.m in Sources */,
 				D80EA2F91695F4AE0068D96C /* jquery-1.8.3.min.js in Sources */,
+				D802D6DC1696942D000230B9 /* ScriptsViewController.m in Sources */,
+				D802D6E016969B4F000230B9 /* EditScriptViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

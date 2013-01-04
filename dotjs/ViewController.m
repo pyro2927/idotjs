@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ConciseKit.h"
 #import "CHDropboxSync.h"
+#import "ScriptsViewController.h"
 
 @interface ViewController ()
 
@@ -21,11 +22,7 @@
 	[NSThread sleepForTimeInterval:2.0];
 	if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] link];
-    } else {
-        self.syncer = $new(CHDropboxSync);
-        self.syncer.delegate = self;
-//        [self.syncer doSync];
-	}
+    }
 }
 
 - (BOOL)canBecomeFirstResponder {
@@ -126,7 +123,7 @@
 }
 
 -(IBAction)showOptions:(id)sender{
-    UIActionSheet *options = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Enter URL", nil];
+    UIActionSheet *options = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Enter URL", @"View Scripts", nil];
     [options showInView:self.view];
 }
 
@@ -137,6 +134,13 @@
             [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
             [alertView show];
             break;
+        }
+        case 1:{
+            ScriptsViewController *svc = $new(ScriptsViewController);
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:svc];
+            [self presentViewController:nav animated:YES completion:^{
+                
+            }];
         }
         default:
             break;
@@ -153,6 +157,12 @@
     }
 }
 
+-(void)dismiss{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:YES];
 	[NSThread detachNewThreadSelector:@selector(link) toTarget:self withObject:nil];
@@ -160,6 +170,13 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+//    register to dismiss view controllers
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:kDismissModal object:nil];
+    
+//    setup DB syncer
+    self.syncer = $new(CHDropboxSync);
+    self.syncer.delegate = self;
+    
 //    set an initial load balance of 0
     loadBalance = 0;
     
