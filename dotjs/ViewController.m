@@ -124,7 +124,11 @@
 
 -(IBAction)showOptions:(id)sender{
     NSString *dropboxText = [([[DBSession sharedSession] isLinked] ? @"Sync" : @"Link") $append:@" Dropbox"];
-    UIActionSheet *options = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Enter URL", @"View Scripts", dropboxText, nil];
+    UIActionSheet *options = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Enter URL", @"View Scripts", dropboxText, nil];
+    if ([[DBSession sharedSession] isLinked]) {
+        options.destructiveButtonIndex = [options addButtonWithTitle:@"Unlink Dropbox"];
+    }
+    options.cancelButtonIndex = [options addButtonWithTitle:@"Cancel"];
     [options showInView:self.view];
 }
 
@@ -146,6 +150,12 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    } else if (buttonIndex == actionSheet.destructiveButtonIndex){
+        [[DBSession sharedSession] unlinkAll];
+        return;
+    }
     switch (buttonIndex) {
         case 0:{
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"URL" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Go", nil];
