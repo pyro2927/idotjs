@@ -128,11 +128,32 @@
     [options showInView:self.view];
 }
 
+-(void)loadURLString:(NSMutableString*)urlString{
+    if (![urlString hasPrefix:@"http"]) {
+        [urlString $prepend_:@"http://"];
+    }
+    [embeddedWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    UIView *superview = [textField superview];
+    if ([superview isKindOfClass:[UIAlertView class]]) {
+        UIAlertView *alert = (UIAlertView*)superview;
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        [self loadURLString:[[textField text] mutableCopy]];
+    }
+    return YES;
+}
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch (buttonIndex) {
         case 0:{
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"URL" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Go", nil];
             [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+            UITextField * alertTextField = [alertView textFieldAtIndex:0];
+            alertTextField.keyboardType = UIKeyboardTypeURL;
+            alertTextField.placeholder = @"http://google.com";
+            alertTextField.delegate = self;
             [alertView show];
             break;
         }
@@ -159,10 +180,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex != alertView.cancelButtonIndex){
         NSMutableString *urlString = [NSMutableString stringWithString:[[alertView textFieldAtIndex:0] text]];
-        if (![urlString hasPrefix:@"http"]) {
-            [urlString $prepend_:@"http://"];
-        }
-        [embeddedWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+        [self loadURLString:urlString];
     }
 }
 

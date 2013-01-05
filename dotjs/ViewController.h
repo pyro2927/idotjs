@@ -10,7 +10,7 @@
 #import <DropboxSDK/DropboxSDK.h>
 #import "CHDropboxSync.h"
 
-@interface ViewController : UIViewController<DBRestClientDelegate, UIWebViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate>{
+@interface ViewController : UIViewController<DBRestClientDelegate, UIWebViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate, UITextFieldDelegate>{
 	DBRestClient* restClient;
 	DBMetadata *folderData;
     int loadBalance;
