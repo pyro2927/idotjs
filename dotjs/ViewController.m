@@ -194,9 +194,12 @@
     }
 }
 
--(void)dismiss{
+-(void)dismiss:(NSNotification*)notification{
     [self dismissViewControllerAnimated:YES completion:^{
-        
+//        check to see if a URL has been passed to us
+        if ([notification object]) {
+            [embeddedWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:(NSString*)[notification object]]]];
+        }
     }];
 }
 
@@ -207,7 +210,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 //    register to dismiss view controllers
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss) name:kDismissModal object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss:) name:kDismissModal object:nil];
     
 //    setup DB syncer
     self.syncer = $new(CHDropboxSync);

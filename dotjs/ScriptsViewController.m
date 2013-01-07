@@ -92,7 +92,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     cell.textLabel.text = [scripts objectAtIndex:indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     return cell;
 }
 
@@ -119,7 +119,6 @@
     }   
 }
 
-
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
@@ -145,6 +144,19 @@
     [editView setScriptName:[scripts objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:editView animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+//    get our script name and correctly parse it
+    NSMutableArray *parts = [NSMutableArray arrayWithArray:[[scripts objectAtIndex:indexPath.row] componentsSeparatedByString:@"."]];
+    if ([[parts lastObject] compare:@"js" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+        [parts removeLastObject];
+    }
+    NSMutableString *urlString = [NSMutableString stringWithString:[parts componentsJoinedByString:@"."]];
+    if (![urlString hasPrefix:@"http"]) {
+        urlString = [NSMutableString stringWithFormat:@"http://%@", urlString];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDismissModal object:urlString];
 }
 
 @end
