@@ -29,7 +29,8 @@
     CGRect keyboardFrame = [value CGRectValue];
     CGRect oldFrame = scriptTextView.frame;
     [UIView animateWithDuration:.25f animations:^{
-        [scriptTextView setFrame:CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height - keyboardFrame.size.height)];
+        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        [scriptTextView setFrame:CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height - (UIInterfaceOrientationIsPortrait(orientation) ? keyboardFrame.size.height : keyboardFrame.size.width))];
     }];
 }
 
@@ -38,7 +39,8 @@
     CGRect keyboardFrame = [value CGRectValue];
     CGRect oldFrame = scriptTextView.frame;
     [UIView animateWithDuration:.25f animations:^{
-        [scriptTextView setFrame:CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height + keyboardFrame.size.height)];
+        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        [scriptTextView setFrame:CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, oldFrame.size.height + (UIInterfaceOrientationIsPortrait(orientation) ? keyboardFrame.size.height : keyboardFrame.size.width))];
     }];
 }
 
@@ -51,11 +53,12 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    scriptTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height)];
+    scriptTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:scriptTextView];
     [scriptTextView setKeyboardType:UIKeyboardTypeASCIICapable];
     [scriptTextView setReturnKeyType:UIReturnKeyDefault];
     [scriptTextView setDelegate:self];
+    [scriptTextView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     
 //    detect when our keyboard is shown/hidden
     [[NSNotificationCenter defaultCenter] addObserver:self
