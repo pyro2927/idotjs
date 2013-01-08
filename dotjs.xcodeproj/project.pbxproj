@@ -286,9 +286,6 @@
 		D8B16B6915644503004E672C = {
 			isa = PBXGroup;
 			children = (
-				D8A57D3F169B9A1F00099C57 /* Default.png */,
-				D8A57D3D169B99C400099C57 /* Default@2x.png */,
-				D8A57D3A169B996000099C57 /* Default@2x.png */,
 				D8E22E741696240A00AD34C1 /* Icons & Default */,
 				D8B16B7E15644503004E672C /* dotjs */,
 				D8B16B7715644503004E672C /* Frameworks */,
@@ -356,6 +353,9 @@
 		D8E22E741696240A00AD34C1 /* Icons & Default */ = {
 			isa = PBXGroup;
 			children = (
+				D8A57D3F169B9A1F00099C57 /* Default.png */,
+				D8A57D3D169B99C400099C57 /* Default@2x.png */,
+				D8A57D3A169B996000099C57 /* Default@2x.png */,
 				D8E22E721696240200AD34C1 /* Icon.png */,
 				D8E22E70169623E500AD34C1 /* Icon@2x.png */,
 				D80EA319169615240068D96C /* Default-568h@2x.png */,
