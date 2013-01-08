@@ -231,7 +231,6 @@
     [embeddedWebView addGestureRecognizer:swiper];
     
 	[embeddedWebView setDelegate:self];
-	[embeddedWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
