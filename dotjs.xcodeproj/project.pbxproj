@@ -30,6 +30,9 @@
 		D80EA317169611140068D96C /* 46-no.png in Resources */ = {isa = PBXBuildFile; fileRef = D80EA311169611140068D96C /* 46-no.png */; };
 		D80EA318169611140068D96C /* 46-no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D80EA312169611140068D96C /* 46-no@2x.png */; };
 		D80EA31A169615240068D96C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D80EA319169615240068D96C /* Default-568h@2x.png */; };
+		D8A57D3B169B996000099C57 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A57D3A169B996000099C57 /* Default@2x.png */; };
+		D8A57D3E169B99C400099C57 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A57D3D169B99C400099C57 /* Default@2x.png */; };
+		D8A57D40169B9A1F00099C57 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A57D3F169B9A1F00099C57 /* Default.png */; };
 		D8ABA392169775EA00BA7B8B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8ABA391169775EA00BA7B8B /* QuartzCore.framework */; };
 		D8B16B7915644503004E672C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B7815644503004E672C /* UIKit.framework */; };
 		D8B16B7B15644503004E672C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B16B7A15644503004E672C /* Foundation.framework */; };
@@ -123,6 +126,9 @@
 		D80EA3441696197B0068D96C /* NSURL+MPURLParameterAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+MPURLParameterAdditions.h"; sourceTree = "<group>"; };
 		D80EA3451696197B0068D96C /* NSURLResponse+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLResponse+Encoding.h"; sourceTree = "<group>"; };
 		D80EA3461696197B0068D96C /* UIAlertView+Dropbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Dropbox.h"; sourceTree = "<group>"; };
+		D8A57D3A169B996000099C57 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D8A57D3D169B99C400099C57 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D8A57D3F169B9A1F00099C57 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D8ABA391169775EA00BA7B8B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D8B16B7415644503004E672C /* dotjs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dotjs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B16B7815644503004E672C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -280,6 +286,9 @@
 		D8B16B6915644503004E672C = {
 			isa = PBXGroup;
 			children = (
+				D8A57D3F169B9A1F00099C57 /* Default.png */,
+				D8A57D3D169B99C400099C57 /* Default@2x.png */,
+				D8A57D3A169B996000099C57 /* Default@2x.png */,
 				D8E22E741696240A00AD34C1 /* Icons & Default */,
 				D8B16B7E15644503004E672C /* dotjs */,
 				D8B16B7715644503004E672C /* Frameworks */,
@@ -421,6 +430,9 @@
 				D80EA31A169615240068D96C /* Default-568h@2x.png in Resources */,
 				D8E22E71169623E500AD34C1 /* Icon@2x.png in Resources */,
 				D8E22E731696240200AD34C1 /* Icon.png in Resources */,
+				D8A57D3B169B996000099C57 /* Default@2x.png in Resources */,
+				D8A57D3E169B99C400099C57 /* Default@2x.png in Resources */,
+				D8A57D40169B9A1F00099C57 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
